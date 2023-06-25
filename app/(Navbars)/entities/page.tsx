@@ -1,4 +1,5 @@
 import PageHeader from "@/components/PageHeader";
+import EntitiesTable from "@/components/Table";
 
 function Entities() {
   return (
@@ -7,6 +8,7 @@ function Entities() {
         heading="Entities"
         text="Manage all entities that are held within your company"
       />
+      <EntitiesTable />
     </>
   );
 }
