@@ -3,6 +3,7 @@ import MainNav from "@/components/MainNav";
 import UserAccountNav from "@/components/UserAccountNav";
 import navbarConfig from "@/lib/navbarConfig";
 import Sidebar from "@/components/Sidebar";
+import Level1Heading from "@/components/Level1Heading";
 
 export default function RootLayout({
   children,
@@ -29,9 +30,7 @@ export default function RootLayout({
         </header>
         <div className="container grid flex-1 gap-12 grid-cols-[200px_1fr]">
           <aside className="flex flex-col w-[200px]">
-            <h3 className="scroll-m-20 text-3xl font-extrabold tracking-tight mb-5">
-              Settings
-            </h3>
+            <Level1Heading text="Settings" className="mb-5" />
             <Sidebar items={navbarConfig.sidebarNav} />
           </aside>
           <main className="flex w-full flex-1 flex-col overflow-hidden">
