@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, type ReactElement } from "react";
 import {
   Table,
   TableBody,
@@ -16,8 +19,11 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import tableConfig from "@/lib/tableConfig";
+import RenameCompanyDialog from "./Dialog";
 
-export default function EntitiesTable() {
+export default function EntitiesTable(): ReactElement {
+  const dialogTriggerRef = useRef<HTMLButtonElement>(null);
+
   return (
     <>
       <Card>
@@ -58,7 +64,10 @@ export default function EntitiesTable() {
             </TableHeader>
             <TableBody>
               {tableConfig.map((row) => (
-                <TableRow key={row.entityName}>
+                <TableRow
+                  key={row.entityName}
+                  onClick={() => dialogTriggerRef.current?.click()}
+                >
                   <TableCell className="font-medium">
                     <small className="text-sm font-medium leading-none">
                       My Entity name
@@ -96,6 +105,7 @@ export default function EntitiesTable() {
           </Table>
         </CardContent>
       </Card>
+      <RenameCompanyDialog ref={dialogTriggerRef} />
     </>
   );
 }
