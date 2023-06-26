@@ -1,3 +1,4 @@
+import Notifications from "@/components/Notifications";
 import PageHeader from "@/components/PageHeader";
 
 function page() {
@@ -7,6 +8,7 @@ function page() {
         heading="Notifications"
         text="Remove notifications for relavent information outside the app"
       />
+      <Notifications />
     </>
   );
 }
