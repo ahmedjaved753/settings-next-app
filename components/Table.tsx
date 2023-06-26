@@ -22,6 +22,12 @@ import tableConfig from "@/lib/tableConfig";
 import RenameCompanyDialog from "./Dialog";
 
 export default function EntitiesTable(): ReactElement {
+  // unfortunatly the dialog in shadcn doesn't take any state to open or close
+  //and has to be toggled using a DialogTrigger component and DialogTrigger must be
+  // child of Dialog. So one way was to wrap the whole table in Dialog component so that I
+  // cn use DialogTrigger in Table but it is not a cleaner solution. So I created a ref
+  // which I farwarded it to Dialog and attached it on the DialogTrigger and whenever
+  // row in table is clicked I'm manually clicking the DialogTrigger using ref
   const dialogTriggerRef = useRef<HTMLButtonElement>(null);
 
   return (
@@ -66,6 +72,10 @@ export default function EntitiesTable(): ReactElement {
               {tableConfig.map((row) => (
                 <TableRow
                   key={row.entityName}
+                  // In a real world scenario I will use a react table component library
+                  // like TanStack table or MUI grid so that it passes me the data of the
+                  // row clicked i.e id so that I can make a put/patch request to API with
+                  // theh upodated company name and company id
                   onClick={() => dialogTriggerRef.current?.click()}
                 >
                   <TableCell className="font-medium">
